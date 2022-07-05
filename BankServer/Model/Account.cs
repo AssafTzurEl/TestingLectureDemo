@@ -6,6 +6,8 @@
         public string Name { get; set; } = "";
         public decimal Balance => _balance;
 
+        public bool IsBlocked => _balance < BlockingThreshold;
+
         public decimal Credit(decimal amount)
         {
             if (amount < 0)
@@ -35,6 +37,8 @@
                 return _balance;
             }
         }
+
+        private const decimal BlockingThreshold = -5000m;
 
         private decimal _balance = 0m;
     }

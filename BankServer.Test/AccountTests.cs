@@ -76,5 +76,50 @@ namespace BankServer.Test
 
             action.Should().Throw<ArgumentOutOfRangeException>();
         }
+
+        [TestMethod]
+        [DataRow(0.0)]
+        [DataRow(10.0)]
+        [DataRow(4999.0)]
+        [DataRow(4999.9999)]
+        [DataRow(5000.0)]
+        public void When_BalanceAboveOrEqualsMinus5000_Expect_AccountToNotBeDisabled(double chargeAmount)
+        {
+            decimal decimalChargeAmount = (decimal) chargeAmount;
+            Account sut = new Account();
+
+            sut.Charge(decimalChargeAmount);
+            sut.IsBlocked.Should().BeFalse();
+        }
+
+        [TestMethod]
+        [DataRow(5000.01)]
+        [DataRow(5001.0)]
+        [DataRow(1000000.0)]
+        public void When_BalanceBelowMinus5000_Expect_AccountToBeDisabled(double chargeAmount)
+        {
+            decimal decimalChargeAmount = (decimal) chargeAmount;
+            Account sut = new Account();
+
+            sut.Charge(decimalChargeAmount);
+            sut.IsBlocked.Should().BeTrue();
+        }
+
+        public void When_BalanceChanges_Expect_AccountToBeDisabledAccordingly()
+        {
+            Account sut = new Account();
+
+            sut.IsBlocked.Should().BeFalse();
+            sut.Charge(4000m); // balance = -4000
+            sut.IsBlocked.Should().BeFalse();
+            sut.Charge(1000m); // balance = -5000
+            sut.IsBlocked.Should().BeFalse();
+            sut.Charge(1m); // balance = -5001
+            sut.IsBlocked.Should().BeTrue();
+            sut.Credit(1); // balance = -5000
+            sut.IsBlocked.Should().BeFalse();
+            sut.Charge(1m); // balance = -5001
+            sut.IsBlocked.Should().BeTrue();
+        }
     }
 }
