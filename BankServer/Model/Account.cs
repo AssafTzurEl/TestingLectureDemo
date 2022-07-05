@@ -30,7 +30,7 @@
 
             lock (this)
             {
-                _balance += amount;
+                _balance += amount; // BUG: Should be "-="
 
                 return _balance;
             }
