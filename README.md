@@ -14,3 +14,9 @@ You may jump to the following branches:
 ## phase-3
 - Test multiple values using [DataRow]
 - Add [FluentAssertions](https://fluentassertions.com/introduction)
+
+## phase-4
+- Add `IsBlocked` property and its unit tests (TDD demo)
+
+## phase-5
+- Add tests for `InMemoryAccountRepository`
