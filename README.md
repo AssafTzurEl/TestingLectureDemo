@@ -20,3 +20,12 @@ You may jump to the following branches:
 
 ## phase-5
 - Add tests for `InMemoryAccountRepository`
+
+## phase-6
+- Add tests for `AccountService`
+- Use [Moq](https://github.com/moq/moq4) mocking library
+
+## phase-7
+- Integration tests:
+    - Using MS Test
+    - Using PyTest
