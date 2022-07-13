@@ -1,12 +1,14 @@
 using BankServer.Model;
 using BankServer.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 
 namespace BankServer.Controllers
 {
     [ApiController]
     [ServiceFilter(typeof(ServiceExceptionFilterAttribute))]
     [Route("[controller]")]
+    [Produces(MediaTypeNames.Application.Json)]
     public class AccountController : ControllerBase
     {
         public AccountController(IAccountService accountService, ILogger<AccountController> logger)
