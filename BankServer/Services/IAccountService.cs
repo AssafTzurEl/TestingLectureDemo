@@ -11,5 +11,6 @@ namespace BankServer.Services
         Account Charge(int accountId, decimal amount);
         void Delete(int accountId);
         void DeleteAll();
+        IEnumerable<Account> GetBlockedAccounts();
     }
 }
