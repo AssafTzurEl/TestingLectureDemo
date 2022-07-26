@@ -105,6 +105,7 @@ namespace BankServer.Test
             sut.IsBlocked.Should().BeTrue();
         }
 
+        [TestMethod]
         public void When_BalanceChanges_Expect_AccountToBeDisabledAccordingly()
         {
             Account sut = new Account();
@@ -116,7 +117,7 @@ namespace BankServer.Test
             sut.IsBlocked.Should().BeFalse();
             sut.Charge(1m); // balance = -5001
             sut.IsBlocked.Should().BeTrue();
-            sut.Credit(1); // balance = -5000
+            sut.Credit(1m); // balance = -5000
             sut.IsBlocked.Should().BeFalse();
             sut.Charge(1m); // balance = -5001
             sut.IsBlocked.Should().BeTrue();
