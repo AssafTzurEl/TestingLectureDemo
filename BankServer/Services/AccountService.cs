@@ -57,6 +57,11 @@ namespace BankServer.Services
             return _accountRepository.GetAll();
         }
 
+        public IEnumerable<Account> GetBlockedAccounts()
+        {
+            return GetAll().Where(account => account.IsBlocked);
+        }
+
         private readonly IAccountRepository _accountRepository;
     }
 }

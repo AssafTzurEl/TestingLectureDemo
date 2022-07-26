@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";
-        public decimal Balance => _balance;
+        public virtual decimal Balance => _balance;
 
-        public bool IsBlocked => _balance < BlockingThreshold;
+        public virtual bool IsBlocked => _balance < BlockingThreshold;
 
         public decimal Credit(decimal amount)
         {
