@@ -29,3 +29,6 @@ You may jump to the following branches:
 - Integration tests:
     - Using MS Test
     - Using PyTest
+
+## phase-8
+- All (known) bugs fixed
