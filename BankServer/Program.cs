@@ -18,7 +18,7 @@ namespace BankServer
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<ServiceExceptionFilterAttribute>();
             builder.Services.AddScoped<IAccountService, AccountService>();
-            builder.Services.AddScoped<IAccountRepository, InMemoryAccountRepository>();
+            builder.Services.AddSingleton<IAccountRepository, InMemoryAccountRepository>();
 
             var app = builder.Build();
 
